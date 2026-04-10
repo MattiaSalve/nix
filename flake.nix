@@ -14,19 +14,41 @@
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages = with pkgs;
-        [ neovim
+        [ 
+	  # Coding utilities 
+	  neovim
+	  claude-code
+	  git
+	  ollama
+	  gh
+
+	  # System management
+	  stow
+	  btop
+		zoxide
+		fzf
+		jq
+		starship
+		tree
+		zsh-syntax-highlighting
+		zsh-autosuggestions
+	  
+	  # Must haves - GUI applications
 	  google-chrome
 	  obsidian
 	  raycast
-	  git
-	  claude-code
-	  ollama
-	  gh
         ];
 
 	homebrew = {
 	  enable = true;
-	  casks = [];
+	  casks = ["docker-desktop"
+		"iterm2"];
+	  brews = [
+		"node"
+	  ];
+	  onActivation.cleanup = "zap";
+	  onActivation.autoUpdate = true;
+	  onActivation.upgrade = true;
 	};
 
 	fonts.packages = with pkgs; [
@@ -42,6 +64,20 @@
       # Set Git commit hash for darwin-version.
       system.configurationRevision = self.rev or self.dirtyRev or null;
       system.primaryUser = "mattiasalvetti";
+      system.defaults = {
+	dock.autohide = true;
+	dock.tilesize = 48;
+	dock.persistent-apps = [
+	  "${pkgs.google-chrome}/Applications/Google Chrome.app"
+	  "/System/Applications/Calendar.app"
+	];
+	dock.show-recents = false;
+	dock.largesize = 64;
+	dock.magnification = true;
+	finder.FXPreferredViewStyle = "clmv";
+	trackpad.Clicking = true;
+
+      };
 
       # Used for backwards compatibility, please read the changelog before changing.
       # $ darwin-rebuild changelog
