@@ -34,7 +34,7 @@
 		zsh-autosuggestions
 	  
 	  # Must haves - GUI applications
-	  google-chrome
+brave
 	  obsidian
 	  raycast
         ];
@@ -42,6 +42,7 @@
 	homebrew = {
 	  enable = true;
 	  casks = ["docker-desktop"
+	  "todoist"
 		"iterm2"];
 	  brews = [
 		"node"
@@ -68,8 +69,10 @@
 	dock.autohide = true;
 	dock.tilesize = 48;
 	dock.persistent-apps = [
-	  "${pkgs.google-chrome}/Applications/Google Chrome.app"
+	  "/Applications/Nix Apps/Brave Browser.app"
 	  "/System/Applications/Calendar.app"
+	  "/Applications/iTerm.app"
+	  "/Applications/Todoist.app"
 	];
 	dock.show-recents = false;
 	dock.largesize = 64;
