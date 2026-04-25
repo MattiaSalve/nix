@@ -1,21 +1,23 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     # Coding utilities
-    neovim
+		cmake
     claude-code
     git
-    ollama
     gh
+    ollama
+    neovim
     # System management
-    stow
     btop
-    zoxide
     fzf
     jq
+		ripgrep
     starship
+    stow
     tree
     zsh-syntax-highlighting
     zsh-autosuggestions
+    zoxide
 
 		# GUI
 		google-chrome
